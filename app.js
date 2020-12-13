@@ -109,8 +109,20 @@ app.post("/addorgan", function(req, res) {
   var choice = req.body.choice;
   var remarks = req.body.remarks;
   var hosp = req.user.id;
+  var hospname = req.user.name;
+  var hospaddress = req.user.address;
+  var hospcontact = req.user.contact;
+
   if (choice == 1) {
-    var newdata = { hosp: hosp, date: date, age: age, remarks: remarks };
+    var newdata = {
+      hosp: hosp,
+      hospname: hospname,
+      hospaddress: hospaddress,
+      hospcontact: hospcontact,
+      date: date,
+      age: age,
+      remarks: remarks
+    };
     heart.create(newdata, function(err, newlyCreated) {
       if (err) {
         console.log(err);
@@ -120,7 +132,15 @@ app.post("/addorgan", function(req, res) {
     });
   }
   if (choice == 2) {
-    var newdata = { hosp: hosp, date: date, age: age, remarks: remarks };
+    var newdata = {
+      hosp: hosp,
+      hospname: hospname,
+      hospaddress: hospaddress,
+      hospcontact: hospcontact,
+      date: date,
+      age: age,
+      remarks: remarks
+    };
     kidney.create(newdata, function(err, newlyCreated) {
       if (err) {
         console.log(err);
@@ -130,7 +150,15 @@ app.post("/addorgan", function(req, res) {
     });
   }
   if (choice == 3) {
-    var newdata = { hosp: hosp, date: date, age: age, remarks: remarks };
+    var newdata = {
+      hosp: hosp,
+      hospname: hospname,
+      hospaddress: hospaddress,
+      hospcontact: hospcontact,
+      date: date,
+      age: age,
+      remarks: remarks
+    };
     intestine.create(newdata, function(err, newlyCreated) {
       if (err) {
         console.log(err);
@@ -140,7 +168,15 @@ app.post("/addorgan", function(req, res) {
     });
   }
   if (choice == 4) {
-    var newdata = { hosp: hosp, date: date, age: age, remarks: remarks };
+    var newdata = {
+      hosp: hosp,
+      hospname: hospname,
+      hospaddress: hospaddress,
+      hospcontact: hospcontact,
+      date: date,
+      age: age,
+      remarks: remarks
+    };
     liver.create(newdata, function(err, newlyCreated) {
       if (err) {
         console.log(err);
@@ -150,7 +186,15 @@ app.post("/addorgan", function(req, res) {
     });
   }
   if (choice == 5) {
-    var newdata = { hosp: hosp, date: date, age: age, remarks: remarks };
+    var newdata = {
+      hosp: hosp,
+      hospname: hospname,
+      hospaddress: hospaddress,
+      hospcontact: hospcontact,
+      date: date,
+      age: age,
+      remarks: remarks
+    };
     lungs.create(newdata, function(err, newlyCreated) {
       if (err) {
         console.log(err);
@@ -160,7 +204,15 @@ app.post("/addorgan", function(req, res) {
     });
   }
   if (choice == 6) {
-    var newdata = { hosp: hosp, date: date, age: age, remarks: remarks };
+    var newdata = {
+      hosp: hosp,
+      hospname: hospname,
+      hospaddress: hospaddress,
+      hospcontact: hospcontact,
+      date: date,
+      age: age,
+      remarks: remarks
+    };
     pancreas.create(newdata, function(err, newlyCreated) {
       if (err) {
         console.log(err);
@@ -170,7 +222,15 @@ app.post("/addorgan", function(req, res) {
     });
   }
   if (choice == 7) {
-    var newdata = { hosp: hosp, date: date, age: age, remarks: remarks };
+    var newdata = {
+      hosp: hosp,
+      hospname: hospname,
+      hospaddress: hospaddress,
+      hospcontact: hospcontact,
+      date: date,
+      age: age,
+      remarks: remarks
+    };
     plasma.create(newdata, function(err, newlyCreated) {
       if (err) {
         console.log(err);
@@ -180,6 +240,90 @@ app.post("/addorgan", function(req, res) {
     });
   }
   //   res.render("index");
+});
+
+app.post("/organ", function(req, res) {
+  //to display all the organs
+  var choice = req.body.choice;
+  //   console.log(choice);
+  if (choice == 1) {
+    heart.find({}, function(err, allheart) {
+      if (err) {
+        console.log(err);
+      } else {
+        res.render("organ", {
+          organ: allheart
+        });
+      }
+    });
+  }
+  if (choice == 2) {
+    kidney.find({}, function(err, allkidney) {
+      if (err) {
+        console.log(err);
+      } else {
+        res.render("organ", {
+          organ: allkidney
+        });
+      }
+    });
+  }
+  if (choice == 3) {
+    intestine.find({}, function(err, allintestine) {
+      if (err) {
+        console.log(err);
+      } else {
+        res.render("organ", {
+          organ: allintestine
+        });
+      }
+    });
+  }
+  if (choice == 4) {
+    liver.find({}, function(err, allliver) {
+      if (err) {
+        console.log(err);
+      } else {
+        res.render("organ", {
+          organ: allliver
+        });
+      }
+    });
+  }
+  if (choice == 5) {
+    lungs.find({}, function(err, alllungs) {
+      if (err) {
+        console.log(err);
+      } else {
+        res.render("organ", {
+          organ: alllungs
+        });
+      }
+    });
+  }
+  if (choice == 6) {
+    pancreas.find({}, function(err, allpancreas) {
+      if (err) {
+        console.log(err);
+      } else {
+        res.render("organ", {
+          organ: allpancreas
+        });
+      }
+    });
+  }
+  if (choice == 7) {
+    plasma.find({}, function(err, allplasma) {
+      if (err) {
+        console.log(err);
+      } else {
+        res.render("organ", {
+          organ: allplasma
+        });
+      }
+    });
+  }
+  //   res.render("organ");
 });
 
 app.get("/", function(req, res) {
@@ -196,14 +340,10 @@ app.get("/register", function(req, res) {
 app.get("/hospitaldashboard", function(req, res) {
   res.render("hospitaldashboard");
 });
-app.get("/findorgan", function(req, res) {
-  //form to be submited so as to search database
-  res.render("findorgan");
-});
-app.get("/organ", function(req, res) {
-  //to display all the organs
-  res.render("organ");
-});
+// app.get("/findorgan", function(req, res) {
+//   //form to be submited so as to search database
+//   res.render("findorgan");
+// });
 
 //Hospital login
 // app.get("/login", function(req, res) {

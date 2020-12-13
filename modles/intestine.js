@@ -1,6 +1,9 @@
 var mongoose = require("mongoose");
 var intestine = new mongoose.Schema({
   hosp: String,
+  hospname: String,
+  hospaddress: String,
+  hospcontact: String,
   date: String,
   age: String,
   remarks: String
